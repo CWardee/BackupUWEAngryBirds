@@ -671,6 +671,7 @@ void AngryBirdsGame::update(const ASGE::GameTime& us)
 
 			if (level_start.spriteComponent()->getBoundingBox().isInside(cursor.spriteComponent()->getBoundingBox()) && leftMouseDown == true)
 			{
+				current_lives = max_lives;
 				initalise_buildings();
 				initalise_rocks();
 				reset_rock_postions();
@@ -692,6 +693,7 @@ void AngryBirdsGame::update(const ASGE::GameTime& us)
 
 			if (level_start.spriteComponent()->getBoundingBox().isInside(cursor.spriteComponent()->getBoundingBox()) && leftMouseDown == true)
 			{
+				current_lives = max_lives;
 				initalise_buildings();
 				initalise_rocks();
 				reset_rock_postions();
@@ -714,6 +716,7 @@ void AngryBirdsGame::update(const ASGE::GameTime& us)
 
 			if (level_start.spriteComponent()->getBoundingBox().isInside(cursor.spriteComponent()->getBoundingBox()) && leftMouseDown == true)
 			{
+				current_lives = max_lives;
 				initalise_buildings();
 				initalise_rocks();
 				reset_rock_postions();
@@ -786,6 +789,11 @@ void AngryBirdsGame::update(const ASGE::GameTime& us)
 					//king collision
 					if (rocks[i].spriteComponent()->getBoundingBox().isInside(king.spriteComponent()->getBoundingBox()) && king.visibility == true)
 					{
+						//save high score
+						if (player_score > high_score)
+						{
+							high_score = player_score;
+						}
 
 						reset_king_positions();
 						king.visibility = false;
